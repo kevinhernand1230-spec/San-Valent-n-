@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>San Valentín 💘</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: pink;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  overflow: hidden;
+}
+
+h1 {
+  color: white;
+  font-size: 26px;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#si {
+  background: red;
+  color: white;
+}
+
+#no {
+  background: white;
+  color: red;
+  position: absolute;
+}
+
+.corazon {
+  position: absolute;
+  color: red;
+  font-size: 20px;
+  animation: flotar 5s linear infinite;
+}
+
+@keyframes flotar {
+  0% {transform: translateY(100vh);}
+  100% {transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>¿Quieres ser mi San Valentín? Jeje</h1>
+
+<div>
+  <button id="si" onclick="aceptar()">Sí ?</button>
+  <button id="no" onmouseover="mover()">No 💔</button>
+</div>
+
+<script>
+let tamaño = 18;
+
+function aceptar() {
+  document.body.innerHTML = "<h1>ya sabía jeje🔥</h1>";
+}
+
+function mover() {
+  let botonNo = document.getElementById("no");
+  let botonSi = document.getElementById("si");
+
+  botonNo.style.top = Math.random() * 80 + "vh";
+  botonNo.style.left = Math.random() * 80 + "vw";
+
+  tamaño += 5;
+  botonSi.style.fontSize = tamaño + "px";
+  botonSi.style.padding = (tamaño/1.5) + "px " + (tamaño*1.5) + "px";
+}
+
+setInterval(() => {
+  let corazon = document.createElement("div");
+  corazon.classList.add("corazon");
+  corazon.innerHTML = "❤️";
+  corazon.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(corazon);
+
+  setTimeout(() => {
+    corazon.remove();
+  }, 5000);
+}, 500);
+</script>
+
+</body>
+</html>
